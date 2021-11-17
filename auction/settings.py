@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'biddingApp.apps.BiddingappConfig',
     'rest_framework',
     'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

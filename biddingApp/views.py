@@ -10,8 +10,14 @@ from django.utils import timezone
 
 
 @api_view(['GET'])
-def test(request):
-    return Response("ok", status=status.HTTP_200_OK)
+def getRoutes(request):
+    routes = [
+        'register/',
+        'create_auction/',
+        'place_bid/',
+        'get_auction_bid_details/'
+    ]
+    return Response({'success':True,'data':routes}, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -32,16 +38,6 @@ def register_bidder(request):
                     status=status.HTTP_201_CREATED)
 
 
-@api_view(['POST'])
-def create_product(request):
-    data = request.data
-    try:
-        product = models.Product.objects.create(name=data.get('product_name'), price=data.get('product_price'))
-        serializer = serializers.ProductsSerializer(product, many=False)
-        return Response({'success': True, 'data': serializer.data}, status=status.HTTP_201_CREATED)
-    except:
-        product = None
-    return Response({'success': False, 'data': 'Unable to create product'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])

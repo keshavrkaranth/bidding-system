@@ -11,9 +11,8 @@ router.register('products',model_views.ProductViewSet)
 
 
 urlpatterns = router.urls + [
-    path('',views.test),
+    path('getRoutes/',views.getRoutes),
     path('register/',views.register_bidder),
-    path('create_product/',views.create_product),
     path('create_auction/',views.create_auction),
     path('place_bid/',views.place_bid),
     path('get_auction_bid_details/',views.get_bid_details),
